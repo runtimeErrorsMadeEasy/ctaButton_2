@@ -5,33 +5,71 @@ export class CtaButton extends LitElement {
     return css`
       :host {
         display: block;
+        border-radius: 48px;
         padding: 25px;
-        color: var(--cta-button-text-color, #000);
+        --bose-foreground-color: darkGreen;
+        --bose-background-color: #006400;
+  }
+ 
+  
+
+  .ctaButton {
+        border-radius: 48px;
+        padding: 12px 50px;
+        color: var(--bose-foreground-color);
+        background-color: var(--bose-background-color);
+        border: 2px solid var(--bose-foreground-color);
+        transition-duration: 0.5s;
+        font-family: impact;
+        font-size: large;
+  }
+
+  
+
+  .CtaButton:hover {
+    border-radius: 48px;
+        --bose-foreground-color: #006400;
+        --bose-background-color: darkGreen;
+        box-shadow: 0 12px 16px 0 rgba(0, 100, 0),
+          0 17px 50px 0 rgba(0, 100, 0);
+      }
+      :host([invert]) .ctaButton:hover,
+      :host([invert]) .ctaButton:focus {
+        --bose-foreground-color: #006400;
+        --bose-background-color: darkGreen;
       }
     `;
   }
 
+  //defines type of variables
+
   static get properties() {
     return {
       title: { type: String },
-      counter: { type: Number },
+      invert: { type: Boolean, reflect: true},
     };
   }
 
+  // constructor for title and invert change
   constructor() {
     super();
-    this.title = 'Hey there';
-    this.counter = 5;
+    this.title = 'Bose Button';
+    this.invert = false;
   }
 
-  __increment() {
-    this.counter += 1;
+  //method for link
+  _myLink() {
+    window.open(
+      'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke'
+    );
   }
-
+  
+  //get button to go to link on click
   render() {
     return html`
-      <h2>${this.title} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
-    `;
+      <button class="CtaButton" id="GenericButton" @click="${this._myLink}">
+      ${this.title}
+      </button>
+      `;
   }
 }
