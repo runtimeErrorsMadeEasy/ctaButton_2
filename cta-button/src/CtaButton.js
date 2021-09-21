@@ -10,7 +10,8 @@ export class CtaButton extends LitElement {
         --bose-foreground-color: darkGreen;
         --bose-background-color: #006400;
   }
-// attricutes for normal button state
+ 
+  
 
   .ctaButton {
         border-radius: 48px;
@@ -23,7 +24,7 @@ export class CtaButton extends LitElement {
         font-size: large;
   }
 
-  // attricbutes for hover button
+  
 
   .CtaButton:hover {
     border-radius: 48px;
