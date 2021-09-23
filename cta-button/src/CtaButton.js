@@ -6,15 +6,15 @@ export class CtaButton extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: block;
-        border-radius: 48px;
-        padding: 25px;
-        --bose-foreground-color: darkGreen;
-        --bose-background-color: #006400;
+        display: inline-block;
+        border-radius: 24px;
+        padding: 12px 50px;
+        --bose-foreground-color: white;
+        --bose-background-color: blue;
       }
 
-      .ctaButton {
-        border-radius: 48px;
+      .CtaButton {
+        border-radius: 24px;
         padding: 12px 50px;
         color: var(--bose-foreground-color);
         background-color: var(--bose-background-color);
@@ -25,26 +25,28 @@ export class CtaButton extends LitElement {
       }
 
       .CtaButton:hover {
-        border-radius: 48px;
-        --bose-foreground-color: #006400;
-        --bose-background-color: darkGreen;
-        box-shadow: 0 12px 16px 0 rgba(0, 100, 0), 0 17px 50px 0 rgba(0, 100, 0);
+        border-radius: 24px;
+        --bose-foreground-color: blue;
+        --bose-background-color: white;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+          0 17px 50px 0 rgba(0, 0, 0, 0.19);
       }
-      :host([invert]) .ctaButton:hover,
-      :host([invert]) .ctaButton:focus {
-        --bose-foreground-color: #006400;
-        --bose-background-color: darkGreen;
+      :host([invert]) .CtaButoon:hover,
+      :host([invert]) .CtaButoon:focus {
+        --bose-foreground-color: blue;
+        --bose-background-color: white;
       }
     `;
   }
 
-  //defines type of variables
+  // defines type of variables
 
   static get properties() {
     return {
       title: { type: String },
       invert: { type: Boolean, reflect: true },
       icon: { type: String },
+      link: { type: String },
     };
   }
 
@@ -52,24 +54,20 @@ export class CtaButton extends LitElement {
   constructor() {
     super();
     this.title = 'Bose Button';
-    this.invert = false;
-    this.icon = 'save';
+    this.invert = true;
+    this.icon = 'image:music-note';
+    this.link =
+      'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke';
   }
 
-  //method for link
-  _myLink() {
-    window.open(
-      'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke'
-    );
-  }
-
-  //get button to go to link on click
+  // get button to go to link on click
   render() {
     return html`
-      <button class="CtaButton" id="GenericButton" @click="${this._myLink}">
-        ${this.title}
-      </button>
-      <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+      <a href="${this.link}" @click="${this.link}">
+        <button class="CtaButton">
+          <simple-icon-lite icon="${this.icon}"></simple-icon-lite>${this.title}
+        </button>
+      </a>
     `;
   }
 }
