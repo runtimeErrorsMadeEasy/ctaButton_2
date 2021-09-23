@@ -1,4 +1,6 @@
 import { html, css, LitElement } from 'lit';
+import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
+import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
 
 export class CtaButton extends LitElement {
   static get styles() {
@@ -9,11 +11,9 @@ export class CtaButton extends LitElement {
         padding: 25px;
         --bose-foreground-color: darkGreen;
         --bose-background-color: #006400;
-  }
- 
-  
+      }
 
-  .ctaButton {
+      .ctaButton {
         border-radius: 48px;
         padding: 12px 50px;
         color: var(--bose-foreground-color);
@@ -22,16 +22,13 @@ export class CtaButton extends LitElement {
         transition-duration: 0.5s;
         font-family: impact;
         font-size: large;
-  }
+      }
 
-  
-
-  .CtaButton:hover {
-    border-radius: 48px;
+      .CtaButton:hover {
+        border-radius: 48px;
         --bose-foreground-color: #006400;
         --bose-background-color: darkGreen;
-        box-shadow: 0 12px 16px 0 rgba(0, 100, 0),
-          0 17px 50px 0 rgba(0, 100, 0);
+        box-shadow: 0 12px 16px 0 rgba(0, 100, 0), 0 17px 50px 0 rgba(0, 100, 0);
       }
       :host([invert]) .ctaButton:hover,
       :host([invert]) .ctaButton:focus {
@@ -46,7 +43,8 @@ export class CtaButton extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-      invert: { type: Boolean, reflect: true},
+      invert: { type: Boolean, reflect: true },
+      icon: { type: String },
     };
   }
 
@@ -55,6 +53,7 @@ export class CtaButton extends LitElement {
     super();
     this.title = 'Bose Button';
     this.invert = false;
+    this.icon = 'save';
   }
 
   //method for link
@@ -63,13 +62,14 @@ export class CtaButton extends LitElement {
       'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke'
     );
   }
-  
+
   //get button to go to link on click
   render() {
     return html`
       <button class="CtaButton" id="GenericButton" @click="${this._myLink}">
-      ${this.title}
+        ${this.title}
       </button>
-      `;
+      <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+    `;
   }
 }
