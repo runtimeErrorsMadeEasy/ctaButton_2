@@ -9,7 +9,7 @@ Class activity:
 Similar:
 - formatting of CSS and button
 - Have same functions that make the two buttons look similar
-Different
+Different:
 - have a button disable function
 - iconEnable function for easier icon use
 
