@@ -48,6 +48,7 @@ export class CtaButton extends LitElement {
       invert: { type: Boolean, reflect: true },
       icon: { type: String },
       link: { type: String },
+      iconEnable: { type: Boolean, reflect: true },
     };
   }
 
@@ -59,6 +60,7 @@ export class CtaButton extends LitElement {
     this.icon = 'image:music-note';
     this.link =
       'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke';
+    this.iconEnable = false;
   }
 
   // get button to go to link on click
@@ -66,7 +68,10 @@ export class CtaButton extends LitElement {
     return html`
       <a href="${this.link}" @click="${this.link}">
         <button class="CtaButton">
-          <simple-icon-lite icon="${this.icon}"></simple-icon-lite>${this.title}
+          ${this.iconEnable
+            ? html`<simple-icon-lite icon="${this.icon}"></simple-icon-lite>`
+            : html``}
+          ${this.title}
         </button>
       </a>
     `;

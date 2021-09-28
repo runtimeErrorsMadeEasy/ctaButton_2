@@ -16,15 +16,11 @@
 
       const title = 'Bose Button';
       render(
-        html` <cta-button .title=${title}> </cta-button> `,
+        html` <cta-button iconEnable="true" title=${title}> </cta-button> `,
         document.querySelector('#demo')
       );
     </script>
 
-    <cta-button
-      title="Google Button"
-      icon="cancel"
-      link="https://google.com"
-    ></cta-button>
+    <cta-button title="Google Button" link="https://google.com"></cta-button>
   </body>
 </html>
