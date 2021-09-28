@@ -1,24 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <style>
-    body {
-      background: #1c3261;
-    }
-  </style>
-</head>
-<body>
-  <div id="demo"></div>
-  <cta-button title = "Bose Button" invert>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background: #1c3261;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script type="module">
+      import { html, render } from 'lit';
+      import '../cta-button.js';
 
+      const title = 'Bose Button';
+      render(
+        html` <cta-button .title=${title}> </cta-button> `,
+        document.querySelector('#demo')
+      );
+    </script>
 
-  <script type="module">
-    
-    import '../cta-button.js';
-    
-
-
-  </script>
-</body>
+    <cta-button
+      title="Google Button"
+      icon="cancel"
+      link="https://google.com"
+    ></cta-button>
+  </body>
 </html>

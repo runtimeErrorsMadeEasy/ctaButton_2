@@ -25,7 +25,7 @@ export class CtaButton extends LitElement {
       }
 
       .CtaButton:hover,
-      :focus {
+      .CtaButton:focus {
         border-radius: 24px;
         --bose-foreground-color: blue;
         --bose-background-color: white;
