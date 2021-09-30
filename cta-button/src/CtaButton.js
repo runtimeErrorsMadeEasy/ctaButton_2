@@ -11,6 +11,7 @@ export class CtaButton extends LitElement {
         padding: 12px 50px;
         --bose-foreground-color: white;
         --bose-background-color: blue;
+        cursor: pointer;
       }
 
       .CtaButton {
@@ -22,20 +23,33 @@ export class CtaButton extends LitElement {
         transition-duration: 0.5s;
         font-family: impact;
         font-size: large;
+        cursor: pointer;
+      }
+      :host([disabled]) {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      :host([dark]) {
+        --bose-foreground-color: white;
+        --bose-background-color: black;
       }
 
       .CtaButton:hover,
+      .CtaButton:active,
       .CtaButton:focus {
         border-radius: 24px;
         --bose-foreground-color: blue;
         --bose-background-color: white;
         box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
           0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        cursor: pointer;
       }
-      :host([invert]) .CtaButoon:hover,
-      :host([invert]) .CtaButoon:focus {
+      :host([invert]) .CtaButton:hover,
+      :host([invert]) .CtaButton:active,
+      :host([invert]) .CtaButton:focus {
         --bose-foreground-color: blue;
         --bose-background-color: white;
+        cursor: pointer;
       }
     `;
   }
@@ -49,6 +63,7 @@ export class CtaButton extends LitElement {
       icon: { type: String },
       link: { type: String },
       iconEnable: { type: Boolean, reflect: true },
+      disabled: { type: Boolean, reflect: true },
     };
   }
 
@@ -61,13 +76,14 @@ export class CtaButton extends LitElement {
     this.link =
       'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke';
     this.iconEnable = false;
+    this.disabled = false;
   }
 
   // get button to go to link on click
   render() {
     return html`
       <a href="${this.link}" @click="${this.link}">
-        <button class="CtaButton">
+        <button class="CtaButton" ?disabled="${this.disabled}">
           ${this.iconEnable
             ? html`<simple-icon-lite icon="${this.icon}"></simple-icon-lite>`
             : html``}
