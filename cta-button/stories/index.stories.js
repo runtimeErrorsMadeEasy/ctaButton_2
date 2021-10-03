@@ -8,37 +8,57 @@ export default {
     title: { control: 'text' },
     counter: { control: 'number' },
     textColor: { control: 'color' },
+    invert: { control: 'boolean' },
+    link: { control: 'text' },
+    icon: { control: 'text' },
+    disabled: { control: 'boolean' },
   },
 };
 
-function Template({ title = 'Hello world', counter = 5, textColor, slot }) {
+function Template({
+  title = 'Bose Headphones 1',
+  textColor,
+  invert = false,
+  link = 'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke',
+  icon = 'image:music-note',
+  disabled = true,
+}) {
   return html`
     <cta-button
       style="--cta-button-text-color: ${textColor || 'black'}"
       .title=${title}
-      .counter=${counter}
+      .invert=${invert}
+      .link=${link}
+      .icon=${icon}
     >
-      ${slot}
+    </cta-button>
+
+    <cta-button
+      style="--cta-button-text-color: ${textColor || 'white'}"
+      title="Bose Headphones 2"
+      .invert=${invert}
+      link="https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke"
+      icon="image:music-note"
+    >
+    </cta-button>
+
+    <cta-button
+      style="--cta-button-text-color: ${textColor || 'white'}"
+      title="Bose Heaphones 3"
+      .invert=${invert}
+      link="https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke"
+      icon="image:music-note"
+    >
+    </cta-button>
+
+    <cta-button
+      title="Bose Headphones 4"
+      .invert=${invert}
+      .icon=${icon}
+      .disabled=${disabled}
+    >
     </cta-button>
   `;
 }
 
 export const Regular = Template.bind({});
-
-export const CustomTitle = Template.bind({});
-CustomTitle.args = {
-  title: 'My title',
-};
-
-export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
-};
-
-export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
-};
-SlottedContent.argTypes = {
-  slot: { table: { disable: true } },
-};
