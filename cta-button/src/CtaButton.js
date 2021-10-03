@@ -9,8 +9,9 @@ export class CtaButton extends LitElement {
         display: inline-block;
         border-radius: 24px;
         padding: 12px 50px;
-        --bose-foreground-color: white;
-        --bose-background-color: blue;
+        --bose-foreground-color: black;
+        --bose-background-color: white;
+        --bose-text-color: white;
         cursor: pointer;
       }
 
@@ -38,7 +39,7 @@ export class CtaButton extends LitElement {
       .CtaButton:active,
       .CtaButton:focus {
         border-radius: 24px;
-        --bose-foreground-color: blue;
+        --bose-foreground-color: white;
         --bose-background-color: white;
         box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
           0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -47,8 +48,8 @@ export class CtaButton extends LitElement {
       :host([invert]) .CtaButton:hover,
       :host([invert]) .CtaButton:active,
       :host([invert]) .CtaButton:focus {
-        --bose-foreground-color: blue;
-        --bose-background-color: white;
+        --bose-foreground-color: white;
+        --bose-background-color: black;
         cursor: pointer;
       }
     `;
