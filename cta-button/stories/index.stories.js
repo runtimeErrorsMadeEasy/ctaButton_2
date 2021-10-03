@@ -18,7 +18,7 @@ export default {
 function Template({
   title = 'Bose Headphones 1',
   textColor,
-  invert = false,
+  invert = true,
   link = 'https://www.bose.com/en_us/products/headphones/noise_cancelling_headphones/quietcomfort-headphones-45.html#v=qc45_white_smoke',
   icon = 'image:music-note',
   disabled = true,
